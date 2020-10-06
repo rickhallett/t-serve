@@ -10,3 +10,9 @@ console.log(user.get('name'));
 console.log(user.get('age'));
 console.log(newUser.get('name'));
 console.log(newUser.get('age'));
+
+user.on('test', () => console.log('test'));
+user.on('test', () => console.log('test'));
+user.on('test', () => console.log('test'));
+
+console.log(user);

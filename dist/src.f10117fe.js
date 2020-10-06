@@ -151,7 +151,11 @@ var User = /*#__PURE__*/function () {
     }
   }, {
     key: "on",
-    value: function on(eventName, callback) {}
+    value: function on(eventName, callback) {
+      var handlers = this.events[eventName] || [];
+      handlers.push(callback);
+      this.events[eventName] = handlers;
+    }
   }]);
 
   return User;
@@ -179,6 +183,16 @@ console.log(user.get('name'));
 console.log(user.get('age'));
 console.log(newUser.get('name'));
 console.log(newUser.get('age'));
+user.on('test', function () {
+  return console.log('test');
+});
+user.on('test', function () {
+  return console.log('test');
+});
+user.on('test', function () {
+  return console.log('test');
+});
+console.log(user);
 },{"./models/User":"src/models/User.ts"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
