@@ -120,21 +120,35 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"src/models/User.ts":[function(require,module,exports) {
 "use strict";
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.User = void 0;
 
-var User =
-/** @class */
-function () {
+var User = /*#__PURE__*/function () {
   function User(data) {
+    _classCallCheck(this, User);
+
     this.data = data;
   }
 
-  User.prototype.get = function (propName) {
-    return this.data[propName];
-  };
+  _createClass(User, [{
+    key: "get",
+    value: function get(propName) {
+      return this.data[propName] || new Error("propName: ".concat(propName, " does not exist on User data: ").concat(this.data));
+    }
+  }, {
+    key: "set",
+    value: function set(update) {
+      Object.assign(this.data, update);
+    }
+  }]);
 
   return User;
 }();
@@ -153,8 +167,14 @@ var user = new User_1.User({
   name: 'MyUser',
   age: 28
 });
+var newUser = new User_1.User({});
+newUser.set({
+  name: 'TestSubject'
+});
 console.log(user.get('name'));
 console.log(user.get('age'));
+console.log(newUser.get('name'));
+console.log(newUser.get('age'));
 },{"./models/User":"src/models/User.ts"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -183,7 +203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33565" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46343" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
