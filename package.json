@@ -1,0 +1,22 @@
+{
+  "name": "t-serve",
+  "version": "1.0.0",
+  "description": "## Instructions For Use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickhallett/t-serve.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickhallett/t-serve/issues"
+  },
+  "homepage": "https://github.com/rickhallett/t-serve#readme",
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
