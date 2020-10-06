@@ -148,6 +148,9 @@ var User = /*#__PURE__*/function () {
     value: function set(update) {
       Object.assign(this.data, update);
     }
+  }, {
+    key: "on",
+    value: function on(eventName, callback) {}
   }]);
 
   return User;
