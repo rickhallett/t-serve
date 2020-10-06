@@ -136,6 +136,7 @@ var User = /*#__PURE__*/function () {
     _classCallCheck(this, User);
 
     this.data = data;
+    this.events = {};
   }
 
   _createClass(User, [{
