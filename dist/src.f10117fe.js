@@ -156,6 +156,15 @@ var User = /*#__PURE__*/function () {
       handlers.push(callback);
       this.events[eventName] = handlers;
     }
+  }, {
+    key: "trigger",
+    value: function trigger(eventName) {
+      var handlers = this.events[eventName];
+      if (!handlers || handlers.length === 0) return;
+      handlers.forEach(function (cb) {
+        return cb();
+      });
+    }
   }]);
 
   return User;
@@ -175,24 +184,21 @@ var user = new User_1.User({
   name: 'MyUser',
   age: 28
 });
-var newUser = new User_1.User({});
-newUser.set({
-  name: 'TestSubject'
-});
 console.log(user.get('name'));
 console.log(user.get('age'));
-console.log(newUser.get('name'));
-console.log(newUser.get('age'));
-user.on('test', function () {
-  return console.log('test');
+user.on('change', function () {
+  return console.log('Change #1');
 });
-user.on('test', function () {
-  return console.log('test');
+user.on('change', function () {
+  return console.log('Change #2');
 });
-user.on('test', function () {
-  return console.log('test');
+user.on('save', function () {
+  return console.log('Saved');
 });
 console.log(user);
+user.trigger('change');
+user.trigger('save');
+user.trigger('doesntExist');
 },{"./models/User":"src/models/User.ts"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
