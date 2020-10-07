@@ -2,5 +2,6 @@
 
 ## Instructions For Use
 
-`sudo npm install -g parcel json-server`
-`npm run dev`
+1. `sudo npm install -g parcel json-server`
+
+2. `npm run dev`
