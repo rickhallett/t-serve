@@ -43,21 +43,28 @@ export class User {
     if (typeof id !== 'number') {
       throw new Error('Cannot fetch without an id');
     }
-    
-    this.sync.fetch(id).then((response: AxiosResponse ): void => {
-      this.set(response.data);
-    })
-    .catch((error: AxiosError): void => {
-      console.log(error);
-      this.events.trigger('error');
-    });
-    
 
-    
+    this.sync
+      .fetch(id)
+      .then((response: AxiosResponse): void => {
+        this.set(response.data);
+      })
+      .catch((error: AxiosError): void => {
+        console.log(error);
+        this.events.trigger('error');
+      });
   }
 
   save(): void {
-
-    this.events.trigger('change');
+    this.sync
+      .save(this.attributes.getAll())
+      .then((response: AxiosResponse) => {
+        this.events.trigger('db:update');
+      })
+      .catch((error: AxiosError): void => {
+        console.log(error);
+        this.events.trigger('error');
+      });
+    
   }
 }

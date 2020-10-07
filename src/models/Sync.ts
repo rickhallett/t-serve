@@ -14,6 +14,13 @@ export class Sync<T extends HasId> {
   save(data: T): AxiosPromise {
     const { id } = data;
 
+    console.log(data);
+
+    if (!id) {
+      console.log(data);
+      throw new Error('no valid id');
+    }
+
     if (id) {
       return axios.put(`${this.rootUrl}/${id}`, data);
     } else {
