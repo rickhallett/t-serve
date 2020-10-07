@@ -1,3 +1,4 @@
+import { Attributes } from './Attributes';
 import { Eventing } from './Eventing';
 import { Sync } from './Sync';
 
@@ -12,17 +13,5 @@ const rootUrl = 'http://localhost:8888/users';
 export class User {
   public events: Eventing = new Eventing();
   public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-
-  constructor(private data: UserProps) {}
-
-  get(propName: string): any {
-    return this.data[propName];
-  }
-
-  set(update: UserProps): void {
-    Object.assign(this.data, update);
-    console.log('User.set()', this.data);
-  }
-
-  
+  public attributes: Attributes<UserProps> = new Attributes<UserProps>();
 }
