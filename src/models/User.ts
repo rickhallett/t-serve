@@ -13,5 +13,9 @@ const rootUrl = 'http://localhost:8888/users';
 export class User {
   public events: Eventing = new Eventing();
   public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-  public attributes: Attributes<UserProps> = new Attributes<UserProps>();
+  public attributes: Attributes<UserProps>;
+
+  constructor(attrs: Attributes<UserProps>) {
+    this.attributes = attrs;
+  }
 }
