@@ -8,15 +8,9 @@ interface UserProps {
 }
 
 export class User {
-  static fromData(data: UserProps): User {
-    const user = new User(new Eventing());
-    user.set(data);
-    return user;
-  }
+  events: Eventing = new Eventing();
 
-  private data: UserProps = {};
-
-  constructor(private events: Eventing) {}
+  constructor(private data: UserProps) {}
 
   get(propName: string): any {
     return this.data[propName];
