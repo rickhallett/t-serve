@@ -15,7 +15,23 @@ export class User {
   public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
   public attributes: Attributes<UserProps>;
 
-  constructor(attrs: Attributes<UserProps>) {
-    this.attributes = attrs;
+  constructor(attrs: UserProps) {
+    this.attributes = new Attributes<UserProps>(attrs);
+  }
+
+  get get() {
+    return this.attributes.get;
+  }
+
+  get set() {
+    return this.attributes.set;
+  }
+
+  get on() {
+    return this.events.on;
+  }
+
+  get trigger() {
+    return this.events.trigger;
   }
 }
